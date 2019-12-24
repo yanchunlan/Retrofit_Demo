@@ -1,16 +1,17 @@
 package com.example.retrofit_demo;
 
+import com.example.library.Retrofit;
+import com.example.library.http.Field;
+import com.example.library.http.GET;
+import com.example.library.http.POST;
+import com.example.library.http.Query;
+
 import org.junit.Test;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Response;
-import retrofit2.Retrofit;
-import retrofit2.http.Field;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 /**
  * author:  ycl
@@ -39,7 +40,7 @@ public class LearnMyRetrofitUnitTest {
             Call call = host.get(IP, KEY);
             Response response = call.execute();
             if (response != null && response.body() != null) {
-                System.out.println("retrofit get response: \n" + response.body().string());
+                System.out.println("myRetrofit get response: \n" + response.body().string());
             }
         }
         // retrofit post
@@ -47,7 +48,7 @@ public class LearnMyRetrofitUnitTest {
             Call call = host.post(IP, KEY);
             Response response = call.execute();
             if (response != null && response.body() != null) {
-                System.out.println("retrofit post response: \n" + response.body().string());
+                System.out.println("myRetrofit post response: \n" + response.body().string());
             }
         }
     }

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 abstract class ParameterHandler<T> {
 
-    abstract void apply(RequestBuilder builder, @Nullable T value) throws IOException;
+    abstract void apply(RequestBuilder builder, @Nullable String value) throws IOException;
 
     static final class Query<T> extends ParameterHandler<T> {
         private final String name;
@@ -18,7 +18,7 @@ abstract class ParameterHandler<T> {
             this.name =name;
         }
 
-        @Override void apply(RequestBuilder builder, @Nullable T value) throws IOException {
+        @Override void apply(RequestBuilder builder, @Nullable String value) throws IOException {
             if (value == null) return; // Skip null values.
             builder.addQueryParam(name, value);
         }
@@ -34,7 +34,7 @@ abstract class ParameterHandler<T> {
             this.name = name;
         }
 
-        @Override void apply(RequestBuilder builder, @Nullable T value) throws IOException {
+        @Override void apply(RequestBuilder builder, @Nullable String value) throws IOException {
             if (value == null) return; // Skip null values.
             builder.addFormField(name, value);
         }

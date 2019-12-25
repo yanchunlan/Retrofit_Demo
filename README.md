@@ -26,7 +26,7 @@
     
 #### retrofit源码调用流程：
 
-    1.  new Retrofit.Builder().xxx.build()
+    1. new Retrofit.Builder().xxx.build()
 	存储baseURL,call.Factory（OkHttpClient）
 	
     2. retrofit.create(xxx.class)

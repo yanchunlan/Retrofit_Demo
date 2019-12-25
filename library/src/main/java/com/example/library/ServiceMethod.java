@@ -87,20 +87,33 @@ public class ServiceMethod {
             }
 
             int parameterCount = parameterAnnotationsArray.length;
+/*
+            System.out.println("build parameterAnnotationsArray "+ Arrays.toString(parameterAnnotationsArray));
+*/
+
             parameterHandlers = new ParameterHandler<?>[parameterCount];
             for (int p = 0; p < parameterCount; p++) {
+                // 几个参数中的一个参数，有几个注解
                 Annotation[] parameterAnnotations = parameterAnnotationsArray[p];
                 if (parameterAnnotations == null) {
                     throw new IllegalArgumentException("No Retrofit annotation found.");
                 }
+/*
+                System.out.println("build parameterAnnotations "+ Arrays.toString(parameterAnnotations));
+*/
+
                 parameterHandlers[p] = parseParameter(p, parameterAnnotations);
             }
             return new ServiceMethod(this);
         }
 
+        // 遍历一个参数的几个注解
         private ParameterHandler<?> parseParameter(int p, Annotation[] annotations) {
             ParameterHandler<?> result = null;
             for (Annotation annotation : annotations) {
+/*
+                System.out.println("build annotation "+ annotation.toString());
+*/
                 ParameterHandler<?> annotationAction = parseParameterAnnotation( annotation);
                 if (annotationAction == null) {
                     continue;

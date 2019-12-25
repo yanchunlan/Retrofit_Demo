@@ -35,14 +35,21 @@ class RequestBuilder {
             }
             relativeUrl = null;
         }
+/*
+        System.out.println("addQueryParam name "+name+" value "+value);
+*/
         urlBuilder.addQueryParameter(name, value);
     }
 
     public void addFormField(String name, String value) {
+/*
+        System.out.println("addFormField name "+name+" value "+value);
+*/
         formBuilder.add(name, value);
     }
 
     public Request build() {
+
         HttpUrl url;
         if (urlBuilder != null) {
             url = urlBuilder.build();
@@ -58,6 +65,9 @@ class RequestBuilder {
         if (formBuilder != null) {
             body = formBuilder.build();
         }
+/*
+        System.out.println("build baseUrl "+baseUrl+" relativeUrl  "+relativeUrl+"\n      url "+url+" method "+method+" body "+body);
+*/
 
         return requestBuilder
                 .url(url)
